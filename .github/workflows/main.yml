@@ -28,4 +28,14 @@ jobs:
           tag: ${{ env.TAG_PREFIX }}${{ github.run_number }}
           commit: ${{ github.sha }}
           body: |
-            This is the release body
+            # get the name of file changed
+            - Modified: ${{ github.event.head_commit.modified }}
+            # get the name of file added
+            - Added: ${{ github.event.head_commit.added }}
+            # get the name of file removed
+            - Removed: ${{ github.event.head_commit.removed }}
+            # get the commit message
+            - Message: ${{ github.event.head_commit.message }}
+            # get the commit author
+            - Author: ${{ github.event.head_commit.author.name }}
+            - Date: ${{ github.event.head_commit.timestamp }}
