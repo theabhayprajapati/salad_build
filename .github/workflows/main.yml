@@ -3,7 +3,7 @@ name: Create Release
 on:
   push:
     tags:
-    - '*'
+      - "*"
     branches:
       - main
 
@@ -13,7 +13,8 @@ env:
 jobs:
   create_release:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
       - uses: ncipollo/release-action@v1
@@ -28,4 +29,3 @@ jobs:
           commit: ${{ github.sha }}
           body: |
             This is the release body
-            
