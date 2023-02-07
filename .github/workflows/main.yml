@@ -24,3 +24,8 @@ jobs:
           prerelease: false
           tag_name: ${{ github.run_number }}
           release_name: Release ${{ github.run_number }}
+          tag: ${{ env.TAG_PREFIX }}${{ github.run_number }}
+          commit: ${{ github.sha }}
+          body: |
+            This is the release body
+            
