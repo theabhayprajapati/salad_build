@@ -12,9 +12,7 @@ let regex = /([^&=]+)=([^&]*)/g, m;
 /* get data from google oauth */
 while (m = regex.exec(location.hash)) {
     params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-}
-/* get data from google oauth */
-console.log(params);
+} 
 const sendDataToServer = async (data) => {
     const options = {
         method: 'POST',
@@ -27,15 +25,12 @@ const sendDataToServer = async (data) => {
     const serverLink = "https://salad-email-webhook-endpoint.vercel.app/emailhook";
     const response = await fetch(serverLink, options);
     const dataFromServer = await response.json();
-    console.log(dataFromServer);
+   
     return dataFromServer;
 }
 const updateUI = () => {
-    if (localStorage.getItem('user')) {
-        console.log(JSON.parse(localStorage.getItem('user')));
-        console.log("logged in");
-    } else {
-        console.log("not logged in");
+    if (localStorage.getItem('user')) { 
+    } else { 
     }
 }
 /* get data from google oauth */
@@ -45,9 +40,7 @@ if (params.access_token) {
         .then(function (response) {
             return response.json();
         })
-        .then(function (data) {
-            console.log(data);
-            console.log("I got the data I requested");
+        .then(function (data) { 
       		sendDataToServer(data);
             localStorage.setItem('user', JSON.stringify(data));
             updateUI();
